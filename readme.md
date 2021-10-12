@@ -1,5 +1,5 @@
 ## Prioritary tasks:
-   ***
+
 ⬜  1. Reset html body
 ⬜  2. Create sidebar and main components into body wrapper
 ⬜  3. Import assets to assets folder
@@ -11,7 +11,7 @@
 3. Import fonts and make it available and import images
 
 ## Other tasks:
-   ***
+
 ⬜  1. Create primary color variable
 ⬜  2. Fill sidebar
 ⬜  3. Create main container
@@ -26,13 +26,13 @@
 
 
 ## Amos tasks:
-   ***
+
 ⬜  1. Create login and logout
 ⬜  2. Create posts CRUD on admin site
 ⬜  3. Update posts component to make it dynamic on web site
 
 ## Additional information:
-   ***
+
 ### [website]
    [website]: <https://webflow.com/blog/ecommerce-website-examples>
    
