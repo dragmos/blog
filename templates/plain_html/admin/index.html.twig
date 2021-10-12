@@ -53,12 +53,15 @@
     
     <script type="text/javascript">
         
-        document.querySelector('.delete-post').addEventListener('click', (e) => {
-            const url = e.target.dataset.url
-            fetch(url, { method: 'DELETE' }).then(()=>{
-                window.location.href = '/admin'
-            });
+        document.querySelectorAll('.delete-post').forEach(post => {
+            post.addEventListener('click', (e) => {
+                const url = e.target.dataset.url
+                fetch(url, { method: 'DELETE' }).then(()=>{
+                    window.location.href = '/admin'
+                });
+            })
         })
+
         
     </script>
     </body>
