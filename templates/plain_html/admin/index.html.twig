@@ -5,9 +5,61 @@
         <title></title>
     </head>
     <body>
-        <form action="{{path('logout')}}" method="post">
-            <button>Salir</button>
+        <form action="{{path('logout')}}" method="post" style="position: absolute; right: 12px;">
+            <button type="submit">Salir</button>
         </form>
-        <br>
+        <h1>Nuevo post</h1>
+        <form action="{{path('create_post')}}" method="post">
+            <label for="title">Titulo</label>
+            <br>
+            <input type="text" name="title">
+            <br>
+            <label for="imgUrl">Url de la imágen</label>
+            <br>
+            <input type="text" name="imgUrl">
+            <br>
+            <label for="content">Contenido</label>
+            <br>
+            <textarea name="content" rows="4" cols="50"></textarea>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+        <hr>
+        <h1>Posts</h1>
+        <div>
+            {% for post in posts %}
+            <div style="border: 1px solid grey;">
+
+                <button
+                class="delete-post"
+                type="submit"
+                style="position: absolute; right: 12px;"
+                data-url="{{path('delete_post', {id: post.id})}}">
+                Eliminar
+                </button>
+
+                
+                <img width="64" height="64" src="{{post.getImgUrl()}}" alt="imagen no disponible">
+                <h2>{{post.getTitle()}}</h2>
+                <p>{{post.getContent()}}</p>
+                <p>Fecha de creación: {{post.getCreatedAt()|date('Y-m-d H:i:s')}}</p>
+            </div>
+
+            {% else %}
+                <h2>No hay posts disponibles</h2>
+            {% endfor %}
+
+        </div>
+    
+    <script type="text/javascript">
+        
+        document.querySelector('.delete-post').addEventListener('click', (e) => {
+            const url = e.target.dataset.url
+            fetch(url, { method: 'DELETE' }).then(()=>{
+                window.location.href = '/admin'
+            });
+        })
+        
+    </script>
     </body>
 </html>

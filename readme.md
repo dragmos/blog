@@ -27,7 +27,7 @@
 ## Amos tasks:
 
 1.  ✅ Create login and logout
-2.  ⬜ Create posts CRUD on admin site
+2.  ✅ Create posts CRUD on admin site
 3.  ⬜ Update posts component to make it dynamic on web site
 
 ## Additional information:
