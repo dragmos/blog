@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class WebController extends AbstractController
 {
@@ -27,32 +29,49 @@ class WebController extends AbstractController
         return $this->render('plain_html/web/index.html.twig', [
             'posts' => $posts
         ]);
-        // return $this->render('web/index.html.twig', [
-            // 'controller_name' => 'WebController',
-        // ]);
     }
     
     /**
-     * @Route("/login", name="login")
+     * @Route("/login", name="login", methods={"GET", "POST"})
      */
-    public function login(): Response
+    public function login(Request $request, Session $session): Response
     {
-        return $this->render('plain_html/login/index.html.twig');
+        if ($session->get('login') == 'true') {
+            return $this->redirect('admin');
+        }
         
-        // return $this->render('web/index.html.twig', [
-        //     'controller_name' => 'WebController',
-        // ]);
+        // si alguien lo ve... login con fines didácticos XD
+        if ($request->getMethod() == "POST") {
+            $user = $request->get('user');
+            $password = $request->get('password');
+            
+            if ($user == 'admin' && $password == 'pass') {
+                $session->set('login', 'true');
+                return $this->redirect('admin');
+            }
+        }
+        
+        return $this->render('plain_html/login/index.html.twig');
     }
-    
+
     /**
      * @Route("/admin", name="admin")
      */
-    public function admin(): Response
+    public function admin(Session $session): Response
     {
-        return $this->render('plain_html/admin/index.html.twig');
+        if ($session->get('login') != 'true') {
+            return $this->redirect('login');
+        }
         
-        // return $this->render('web/index.html.twig', [
-        //     'controller_name' => 'WebController',
-        // ]);
+        return $this->render('plain_html/admin/index.html.twig');
+    }
+    
+    /**
+     * @Route("/logout", name="logout", methods={"POST"})
+     */
+    public function logout(Session $session): Response
+    {
+        $session->set('login', 'false');
+        return $this->redirect('login');
     }
 }
