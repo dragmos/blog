@@ -1,7 +1,7 @@
 ## Prioritary tasks:
 
 1. ✅ Reset html body
-2.  ⬜ Create sidebar and main components into body wrapper
+2.  ✅ Create sidebar and main components into body wrapper
 3.  ⬜ Import assets to assets folder
 
 ## Guide of tasks
