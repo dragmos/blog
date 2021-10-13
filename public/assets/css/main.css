@@ -9,10 +9,10 @@ body {
 height: 100%;
 margin: 0;
 }
-/* 
-.blog-wrap{
-display: flex;
-justify-content: center;
-} */
 
 
+:root{
+    --hover: #4353ff;
+    --primary:##000000;
+    --icons:#43464d
+}

@@ -2,7 +2,7 @@
 
 1. ✅ Reset html body
 2.  ✅ Create sidebar and main components into body wrapper
-3.  ⬜ Import assets to assets folder (in progress)
+3.  ⬜ Import assets to assets folder **(in progress)**
 
 ## Guide of tasks
 
@@ -12,7 +12,7 @@
 
 ## Other tasks:
 
-1.  ⬜ Create primary color variable
+1.  ✅ Create primary color variable
 2.  ⬜ Fill sidebar
 3.  ⬜ Create main container
 4.  ⬜ Create header image
